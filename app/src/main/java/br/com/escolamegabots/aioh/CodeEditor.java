@@ -2,6 +2,7 @@ package br.com.escolamegabots.aioh;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.view.View;
 
 import com.google.blockly.android.AbstractBlocklyActivity;
 import com.google.blockly.android.codegen.CodeGenerationRequest;
@@ -23,8 +24,13 @@ public class CodeEditor extends AbstractBlocklyActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //setContentView(R.layout.activity_code_editor);
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected View onCreateContentView(int parentId) {
+        View root = getLayoutInflater().inflate(R.layout.activity_code_editor, null);
+        return root;
     }
 
     @NonNull
@@ -56,6 +62,6 @@ public class CodeEditor extends AbstractBlocklyActivity {
     @Override
     protected void onInitBlankWorkspace() {
         // Initialize available variable names.
-        getController().addVariable("item");
+        //getController().addVariable("item");
     }
 }
