@@ -19,6 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".CodeEditor"
+            android:label="@string/title_activity_code_editor"
+            android:theme="@style/AppTheme.CodeEditor">
+        </activity>
     </application>
 
 </manifest>
