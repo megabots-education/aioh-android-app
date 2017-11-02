@@ -18,6 +18,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
@@ -33,5 +40,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.google.blockly.android:blocklylib-core:0.9-beta.20171003'
     compile 'com.google.blockly.android:blocklylib-vertical:0.9-beta.20171003'
+    compile 'com.google.guava:guava:23.3-android'
+    compile 'com.squareup.okhttp3:okhttp:3.9.0'
     testCompile 'junit:junit:4.12'
 }

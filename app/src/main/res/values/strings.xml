@@ -4,6 +4,12 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_code_editor">CodeEditor</string>
+    <string name="action_settings">Configurações</string>
+    <string name="title_activity_code_editor">Editor de Código</string>
+
+    <string name="code_editor_uploading_code">Enviando código...</string>
+    <string name="code_editor_upload_success">Código enviado. O Aioh já está executando ele!</string>
+    <string name="code_editor_cant_upload">Não foi possível concluir o upload. Tente de novo.</string>
+    <string name="code_editor_unknown_host_error">Não foi possível contatar o Aioh. Tente reiniciá-lo e conectar novamente ao App.</string>
+
 </resources>

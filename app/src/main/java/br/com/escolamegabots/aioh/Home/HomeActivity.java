@@ -1,9 +1,8 @@
-package br.com.escolamegabots.aioh;
+package br.com.escolamegabots.aioh.Home;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,6 +12,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import br.com.escolamegabots.aioh.CodeEditor.CodeEditorActivity;
+import br.com.escolamegabots.aioh.R;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -28,7 +30,7 @@ public class HomeActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent codeEditor = new Intent(HomeActivity.this, CodeEditor.class);
+                Intent codeEditor = new Intent(HomeActivity.this, CodeEditorActivity.class);
                 HomeActivity.this.startActivity(codeEditor);
 
                 //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
