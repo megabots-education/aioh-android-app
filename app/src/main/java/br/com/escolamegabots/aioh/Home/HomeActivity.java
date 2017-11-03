@@ -15,6 +15,7 @@ import android.view.MenuItem;
 
 import br.com.escolamegabots.aioh.CodeEditor.CodeEditorActivity;
 import br.com.escolamegabots.aioh.R;
+import br.com.escolamegabots.aioh.Settings.SettingsActivity;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -65,6 +66,11 @@ public class HomeActivity extends AppCompatActivity
         return true;
     }
 
+    public void openIntent(Class<?> cls) {
+        Intent i = new Intent(this, cls);
+        startActivity(i);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -74,6 +80,7 @@ public class HomeActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            openIntent(SettingsActivity.class);
             return true;
         }
 
@@ -86,18 +93,8 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        if (id == R.id.nav_settings) {
+            openIntent(SettingsActivity.class);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

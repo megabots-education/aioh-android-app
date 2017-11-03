@@ -4,17 +4,17 @@ package br.com.escolamegabots.aioh.tasks;
  * Created by Gustavo Freitas on 02/11/2017.
  */
 
-public class AssyncTaskResult<T> {
+public class AsyncTaskResult<T> {
 
     private T result = null;
     private Exception error = null;
 
-    public AssyncTaskResult(T result) {
+    public AsyncTaskResult(T result) {
         super();
         this.result = result;
     }
 
-    public AssyncTaskResult(Exception error) {
+    public AsyncTaskResult(Exception error) {
         super();
         this.error = error;
     }

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.escolamegabots.aioh">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -24,7 +24,14 @@
         <activity
             android:name=".CodeEditor.CodeEditorActivity"
             android:label="@string/title_activity_code_editor"
-            android:theme="@style/AppTheme.CodeEditor">
+            android:theme="@style/AppTheme.CodeEditor"></activity>
+        <activity
+            android:name=".Settings.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".Home.HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.escolamegabots.aioh.Home.HomeActivity" />
         </activity>
     </application>
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- PREFERENCES NAMES AND DEFAULT VALUES DEFINITIONS -->
+
+    <!-- General Options -->
+    <string name="pref_user_name">user_name</string>
+    <string name="pref_default_user_name">Aioh Device</string>
+
+
+    <!-- Notifications Options -->
+    <string name="pref_notifications_enabled">notifications_enabled</string>
+    <string name="pref_default_notifications_enabled">true</string>
+
+    <string name="pref_notifications_vibrate">notifications_vibrate</string>
+    <string name="pref_default_notifications_vibrate">true</string>
+
+    <string name="pref_notifications_ringtone">notifications_ringtone</string>
+    <string name="pref_default_notifications_ringtone">content://settings/system/notification_sound</string>
+
+    <!-- Data and Sync Options -->
+    <string name="pref_sync_frequency">sync_frequency</string>
+    <string name="pref_default_sync_frequency">15</string>
+
+
+    <!-- Developer Options -->
+    <string name="pref_aioh_address">aioh_address</string>
+    <string name="pref_default_aioh_address">http://</string>
+
+    <string name="pref_aioh_service_name">aioh_default_service_name</string>
+    <string name="pref_default_aioh_service_name">Aioh</string>
+
+
+</resources>

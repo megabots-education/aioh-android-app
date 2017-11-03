@@ -1,13 +1,16 @@
 package br.com.escolamegabots.aioh.CodeEditor;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
-import br.com.escolamegabots.aioh.tasks.AssyncTaskResult;
-import br.com.escolamegabots.aioh.tasks.CodeUploaderTask;
+import br.com.escolamegabots.aioh.tasks.AsyncTaskResult;
+import br.com.escolamegabots.aioh.tasks.Communication.CodeUploaderTask;
 import br.com.escolamegabots.aioh.R;
 import okhttp3.Response;
 
@@ -17,9 +20,8 @@ import okhttp3.Response;
 
 public class CodeEditorPresenter implements CodeEditorContract.Presenter {
 
-    private CodeUploaderTask mCodeUploaderTask;
-    private CodeEditorContract.View mCodeEditorView;
     private Context mViewContext;
+    private CodeEditorContract.View mCodeEditorView;
 
     public CodeEditorPresenter(@NonNull CodeEditorContract.View codeEditorView) {
         this.mCodeEditorView = codeEditorView;
@@ -33,22 +35,38 @@ public class CodeEditorPresenter implements CodeEditorContract.Presenter {
 
     @Override
     public void uploadCode(String sourceCode) {
-        this.mCodeUploaderTask = new CodeUploaderTask(sourceCode, (AssyncTaskResult<Response> result) -> {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(mViewContext);
+        String address = preferences.getString(mViewContext.getString(R.string.pref_aioh_address), null);
+
+        CodeUploaderTask codeUploaderTask = new CodeUploaderTask((AsyncTaskResult<Response> result) -> {
+
+            int stringId;
+
             Log.w("Upload Code Response", "\t" + result);
+
             if(result.isSuccessful()){
-                mCodeEditorView.showRunResult(mViewContext.getString(R.string.code_editor_upload_success));
+                stringId = R.string.code_editor_upload_success;
             }
             else{
                 Log.w("Upload Exception", "\t" + result.getError());
                 if(result.getError() instanceof UnknownHostException){
-                    mCodeEditorView.showRunResult(mViewContext.getString(R.string.code_editor_unknown_host_error));
+                    stringId = R.string.code_editor_unknown_host_error;
+                }
+                else if(result.getError() instanceof SocketTimeoutException){
+                    stringId = R.string.code_editor_connection_timeour_error;
+                }
+                else if(result.getError() instanceof IllegalArgumentException){
+                    stringId = R.string.code_editor_invalid_hostname;
                 }
                 else{
-                    mCodeEditorView.showRunResult(mViewContext.getString(R.string.code_editor_cant_upload));
+                    stringId = R.string.code_editor_cant_upload;
                 }
             }
+
+            mCodeEditorView.showRunResult(mViewContext.getString(stringId));
         });
-        mCodeUploaderTask.execute();
+        Log.w("Upload Code", "\t Trying to upload code at address " + address);
+        codeUploaderTask.execute(sourceCode, address);
     }
 
     @Override
